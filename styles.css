@@ -1,0 +1,30 @@
+body{
+    background-color: rgb(253, 211, 211);
+}
+
+.navbar {
+    margin-bottom: 50px;
+    background-color: pink;
+    padding-left: 20px;
+}
+
+.calcButton {
+    width: 100%;
+}
+
+.resultSection h1{
+    font-size: 100px;
+    margin-left: 42%;
+}
+.resultSection p{
+    font-size: 20px;
+    margin-left: 45%;
+}
+
+.person2 {
+    margin-top: 50px;
+}
+
+.calcButton{
+    margin-top: 25px;;
+}
