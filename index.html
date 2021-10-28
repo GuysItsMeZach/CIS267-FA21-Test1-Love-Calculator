@@ -16,6 +16,8 @@
     
 
     <title>Love Calculator</title>
+
+    
   </head>
   <body>
     
@@ -23,12 +25,28 @@
       <span class="navbar-brand mb-0 h1">❤️FHU Love Calculator</span>
     </nav>
 
+    <form>
+      <input type="text" id="number" value="0"/>
+      <input type="button" onclick="incrementValue()" value="Increase" />
+  </form>
+ 
+  <script>
+     function incrementValue()
+     {
+         var value = parseInt(document.getElementById('number').value, 10);
+         value = isNaN(value) ? 0 : value;
+         value++;
+         document.getElementById('number').value = value;
+     }
+ </script>
+
     <section class="resultSection">
-
-      <h1>9%</h1>
-      <p> bruh...</p>
-
+      <h1 type=text id="number" value="0">Results</h1>
+      <span id="cvalue"></span>
+        
+    
     </section>
+
    
     
      <div class="container">
@@ -38,20 +56,21 @@
      <div class="row g-2">
         <div class="col-md">
           <div class="form-floating">
-            <input type="Person 1 Name" class="form-control" id="floatingInputGrid" placeholder="Person 1 Name" value="">
+            <input type="Person 1 Name" class="form-control" id="floatingInputGrid1" placeholder="Person 1 Name" value="">
             <label for="floatingInputGrid">Person 1 Name</label>
           </div>
         </div>
         <div class="col-md">
           <div class="form-floating">
             <select class="form-select" id="clubSelect" >
-              <option selected>None</option>
+              <option value="none" selected>None</option>
               <option value="xbx">ΧBΧ</option>
-              <option value="ep">EP</option>
-              <option value="on">ON</option>
-              <option value="xbx">PKA</option>
-              <option value="ep">XCD</option>
-              <option value="on">Athlete</option>
+              <option value="ep">ΣP</option>
+              <option value="on">θN</option>
+              <option value="pka">PKA</option>
+              <option value="xcd">ΞXΔ</option>
+              <option value="athlete">Athlete</option>
+              <option value="chorale">Chorale</option>
             </select>
             <label for="clubSelect">Club</label>
           </div>
@@ -66,17 +85,21 @@
       <div class="row g-2">
         <div class="col-md">
           <div class="form-floating">
-            <input type="Person 1 Name" class="form-control" id="floatingInputGrid" placeholder="Person 2 Name" value="">
+            <input type="Person 1 Name" class="form-control" id="floatingInputGrid2" placeholder="Person 2 Name" value="">
             <label for="floatingInputGrid">Person 2 Name</label>
           </div>
         </div>
-        <div class="col-md">
+        <div id="clubSelect2" class="col-md">
           <div class="form-floating">
             <select class="form-select" id="clubSelect" >
-              <option selected>None</option>
-              <option value="xbx">ΧβΧ</option>
-              <option value="ep">EP</option>
-              <option value="on">ON</option>
+              <option value="none" selected>None</option>
+              <option value="xbx">ΧBΧ</option>
+              <option value="ep">ΣP</option>
+              <option value="on">θN</option>
+              <option value="pka">PKA</option>
+              <option value="xcd">ΞXΔ</option>
+              <option value="athlete">Athlete</option>
+              <option value="chorale">Chorale</option>
             </select>
             <label for="clubSelect">Club</label>
           </div>
@@ -85,7 +108,7 @@
     </section>
     
 
-      <button type="button" class="calcButton btn btn-primary btn-lg btn-block">Calculate Results</button>
+      <button id= "calcButton" type="button" class="calcButton btn btn-primary btn-lg btn-block">Calculate Results</button>
 
 
     </div>

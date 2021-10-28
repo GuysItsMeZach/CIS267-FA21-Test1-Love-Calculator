@@ -28,3 +28,8 @@ body{
 .calcButton{
     margin-top: 25px;;
 }
+
+#answer {
+    position: absolute;
+    font-size: 50px;
+}
