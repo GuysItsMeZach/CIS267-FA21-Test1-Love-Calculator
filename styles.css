@@ -41,3 +41,8 @@ body{
 .calcPercent {
     font-size: 200px;
 }
+
+.daResults {
+    text-align: center;
+    margin-top: 20px;
+}
