@@ -1,14 +1,26 @@
 
 // Input
-// Name1, Name2, Club1, Club2
+// Name1, Name2, , Club2
 
 // Output
 // NameCompatibility (from API) and ClubCompatibility (from matrix)
 // witty description 
 var name1 = "";
 var name2 = "";
-var c1 = "";
-var c2 = "";
+var c1 = "none";
+var c2 = "none";
+
+const clubSelect1 = document.getElementById("clubSelect1");
+const clubSelect2 = document.getElementById("clubSelect2");
+
+clubSelect1.addEventListener("change", () => {
+    c1 = clubSelect1.value.toString();
+});
+
+clubSelect2.addEventListener("change", () => {
+    c2 = clubSelect2.value.toString();
+});
+
 
 
 
@@ -43,7 +55,16 @@ function getDescription( score) {
 }
 
 const clubCompatibilityDictionary = {
-    xbx: { xbx: 99, pka: 87, on: 32}
+    ep: { ep: 89, xbx: 7, on: 0, pka: 35, xcd: 46, athlete: 80, chorale: 21, none: 17},
+    xbx: { ep: 7, xbx: 94, on: 68, pka: 57, xcd: 68, athlete: 9, chorale: 92, none: 29},
+    on: { ep: 0, xbx: 68, on: 99, pka: 10, xcd: 3, athlete: 2, chorale: 98, none: 93},
+    pka: { ep: 35, xbx: 57, on: 10, pka: 98, xcd: 89, athlete: 99, chorale: 52, none: 27},
+    xcd: { ep: 46, xbx: 68, on: 3, pka: 89, xcd: 98, athlete: 67, chorale: 52, none: 7},
+    athlete: { ep: 80, xbx: 9, on: 2, pka: 99, xcd: 67, athlete: 84, chorale: 2, none: 9},
+    chorale: { ep: 21, xbx: 92, on: 98, pka: 52, xcd: 52, athlete: 2, chorale: 99, none: 28},
+    none: { ep: 17, xbx: 29, on: 93, pka: 27, xcd: 7, athlete: 9, chorale: 28, none: 13}
+    
+
 }; 
 
 let xbxWithPKA = clubCompatibilityDictionary.xbx.pka;
@@ -61,16 +82,6 @@ const clubCompatibilityMatrix = [
 let xbxWithPKA2 = clubCompatibilityMatrix[XBX][PKA];
 
 
-var club1 = document.getElementById("clubSelect1");
-var club2 = document.getElementById("clubSelect2");
-
-club1.addEventListener("change", ()=>{
-    c1 = club1.value;
-});
-
-club2.addEventListener("change", ()=>{
-    c2 = club2.value;
-});
 
 var cvalue = 10;
 function updateClubs(c1, c2){
@@ -79,142 +90,148 @@ function updateClubs(c1, c2){
     if (c1 == "ep" && c2 == "ep"){
         cvalue = 89;
     }
-    else if (c1 == "xbx" && c2 == "xbx"){
+     if (c1 == "xbx" && c2 == "xbx"){
         cvalue = 94;
     }
-    else if (c1 == "on" && c2 == "on"){
+     if (c1 == "on" && c2 == "on"){
         cvalue = 99
     }
-    else if (c1 == "pka" && c2 == "pka"){
+     if (c1 == "pka" && c2 == "pka"){
         cvalue = 98;
     }
-    else if (c1 == "xcd" && c2 == "xcd"){
+     if (c1 == "xcd" && c2 == "xcd"){
         cvalue = 98;
     }
-    else if (c1 == "athlete" && c2 == "athlete"){
+     if (c1 == "athlete" && c2 == "athlete"){
         cvalue = 89;
     }
-    else if (c1 == "chorale" && c2 == "chorale"){
+     if (c1 == "chorale" && c2 == "chorale"){
         cvalue = 99;
     }
-    else if (c1 == "none" && c2 == "none"){
+     if (c1 == "none" && c2 == "none"){
         cvalue = 89;
     }
     //same club
     //"ep"
-    else if ((c1 == "ep" && c2 == "xbx") || (c1 == "xbx" && c2 == "ep")){
+     if ((c1 == "ep" && c2 == "xbx") || (c1 == "xbx" && c2 == "ep")){
         cvalue = 7;
     }
-    else if ((c1 == "ep" && c2 == "on") || (c1 == "on" && c2 == "ep")){
+     if ((c1 == "ep" && c2 == "on") || (c1 == "on" && c2 == "ep")){
         cvalue = 0;
     }
-    else if ((c1 == "ep" && c2 == "pka") || (c1 == "pka" && c2 == "ep")){
+     if ((c1 == "ep" && c2 == "pka") || (c1 == "pka" && c2 == "ep")){
         cvalue = 35;
     }
-    else if ((c1 == "ep" && c2 == "xcd") || (c1 == "xcd" && c2 == "ep")){
+     if ((c1 == "ep" && c2 == "xcd") || (c1 == "xcd" && c2 == "ep")){
         cvalue = 46;
     }
-    else if ((c1 == "ep" && c2 == "athlete") || (c1 == "athlete" && c2 == "ep")){
+     if ((c1 == "ep" && c2 == "athlete") || (c1 == "athlete" && c2 == "ep")){
         cvalue = 80;
     }
-    else if ((c1 == "ep" && c2 == "chorale") || (c1 == "chorale" && c2 == "ep")){
+     if ((c1 == "ep" && c2 == "chorale") || (c1 == "chorale" && c2 == "ep")){
         cvalue = 21;
     }
-    else if ((c1 == "ep" && c2 == "none") || (c1 == "none" && c2 == "ep")){
+     if ((c1 == "ep" && c2 == "none") || (c1 == "none" && c2 == "ep")){
         cvalue = 17;
     }
     //"ep"
     //"xbx"
-    else if ((c1 == "xbx" && c2 == "on") || (c1 == "on" && c2 == "xbx")){
+     if ((c1 == "xbx" && c2 == "on") || (c1 == "on" && c2 == "xbx")){
         cvalue = 68;
     }
-    else if ((c1 == "xbx" && c2 == "pka") || (c1 == "pka" && c2 == "xbx")){
+     if ((c1 == "xbx" && c2 == "pka") || (c1 == "pka" && c2 == "xbx")){
         cvalue = 57;
     }
-    else if ((c1 == "xbx" && c2 == "xcd") || (c1 == "xcd" && c2 == "xbx")){
+     if ((c1 == "xbx" && c2 == "xcd") || (c1 == "xcd" && c2 == "xbx")){
         cvalue = 68;
     }
-    else if ((c1 == "xbx" && c2 == "athlete") || (c1 == "on" && c2 == "athlete")){
+     if ((c1 == "xbx" && c2 == "athlete") || (c1 == "on" && c2 == "athlete")){
         cvalue = 9;
     }
-    else if ((c1 == "xbx" && c2 == "chorale") || (c1 == "chorale" && c2 == "xbx")){
+     if ((c1 == "xbx" && c2 == "chorale") || (c1 == "chorale" && c2 == "xbx")){
         cvalue = 92;
     }
-    else if ((c1 == "xbx" && c2 == "none") || (c1 == "none" && c2 == "xbx")){
+     if ((c1 == "xbx" && c2 == "none") || (c1 == "none" && c2 == "xbx")){
         cvalue = 68;
     }
     //"xbx"
     //on
-    else if ((c1 == "on" && c2 == "pka") || (c1 == "pka" && c2 == "on")){
+     if ((c1 == "on" && c2 == "pka") || (c1 == "pka" && c2 == "on")){
         cvalue = 10;
     }
-    else if ((c1 == "on" && c2 == "xcd") || (c1 == "xcd" && c2 == "on")){
+     if ((c1 == "on" && c2 == "xcd") || (c1 == "xcd" && c2 == "on")){
         cvalue = 3;
     }
-    else if ((c1 == "on" && c2 == "athlete") || (c1 == "athlete" && c2 == "on")){
+     if ((c1 == "on" && c2 == "athlete") || (c1 == "athlete" && c2 == "on")){
         cvalue = 2;
     }
-    else if ((c1 == "on" && c2 == "chorale") || (c1 == "chorale" && c2 == "on")){
+     if ((c1 == "on" && c2 == "chorale") || (c1 == "chorale" && c2 == "on")){
         cvalue = 98;
     }
-    else if ((c1 == "on" && c2 == "none") || (c1 == "none" && c2 == "on")){
+     if ((c1 == "on" && c2 == "none") || (c1 == "none" && c2 == "on")){
         cvalue = 93;
     }
     //on
     //"pka"
-    else if ((c1 == "pka" && c2 == "xcd") || (c1 == "xcd" && c2 == "pka")){
+     if ((c1 == "pka" && c2 == "xcd") || (c1 == "xcd" && c2 == "pka")){
         cvalue = 89;
     }
-    else if ((c1 == "pka" && c2 == "athlete") || (c1 == "athlete" && c2 == "pka")){
+     if ((c1 == "pka" && c2 == "athlete") || (c1 == "athlete" && c2 == "pka")){
         cvalue = 99;
     }
-    else if ((c1 == "pka" && c2 == "athlete") || (c1 == "athlete" && c2 == "pka")){
+     if ((c1 == "pka" && c2 == "athlete") || (c1 == "athlete" && c2 == "pka")){
         cvalue = 52;
     }
-    else if ((c1 == "pka" && c2 == "none") || (c1 == "none" && c2 == "pka")){
+     if ((c1 == "pka" && c2 == "none") || (c1 == "none" && c2 == "pka")){
         cvalue = 89;
     }
     //"pka"
     //"xcd"
-    else if ((c1 == "xcd" && c2 == "athlete") || (c1 == "athlete" && c2 == "xcd")){
+     if ((c1 == "xcd" && c2 == "athlete") || (c1 == "athlete" && c2 == "xcd")){
         cvalue = 67;
     }
-    else if ((c1 == "xcd" && c2 == "chorale") || (c1 == "chorale" && c2 == "xcd")){
+     if ((c1 == "xcd" && c2 == "chorale") || (c1 == "chorale" && c2 == "xcd")){
         cvalue = 52;
     }
-    else if ((c1 == "xcd" && c2 == "none") || (c1 == "none" && c2 == "xcd")){
+     if ((c1 == "xcd" && c2 == "none") || (c1 == "none" && c2 == "xcd")){
         cvalue = 7;
     }
     //"xcd"
     //"athlete"
-    else if ((c1 == "athlete" && c2 == "chorale") || (c1 == "chorale" && c2 == "athlete")){
+     if ((c1 == "athlete" && c2 == "chorale") || (c1 == "chorale" && c2 == "athlete")){
         cvalue = 2;
     }
-    else if ((c1 == "athlete" && c2 == "none") || (c1 == "none" && c2 == "athlete")){
+     if ((c1 == "athlete" && c2 == "none") || (c1 == "none" && c2 == "athlete")){
         cvalue = 9;
     }
     //"athlete"
     //"chorale"
-    else if ((c1 == "chorale" && c2 == "none") || (c1 == "none" && c2 == "chorale")){
+     if ((c1 == "chorale" && c2 == "none") || (c1 == "none" && c2 == "chorale")){
         cvalue = 28;
     }
     //"chorale"
+    console.log(cvalue);
     return cvalue;
 }
 
 var percentage = 0;
 const percentage1 = document.getElementById("calcResults");
 
-var result = 0;
+var clubResult = 0;
 calcButton.addEventListener('click', async ()=> {
    
     clearResults();
     
-    result = parseInt( await updateClubs());
+    clubResult = parseInt( await clubCompatibilityDictionary[c1][c2]);
     
     percentage = parseInt(await getPercent());
-    let avg = (percentage + result)/2;
+    let avg = (percentage + clubResult)/2;
     const divider = document.createElement('div');
+
+    console.log(clubResult);
+    console.log(c2);
+    console.log(c1);
+    
 
 
     const calcInnerHTML = `
