@@ -48,9 +48,25 @@ const descriptionDictionary = [
 ];
 
 function getDescription( score) {
-    if( score >= 10){
-        description = "not a chance, fool."
+    if( score <= 10){
+        description = "not a chance, fool.";
+        return description;
     }
+    else if( score <= 45){
+        description = "prolly not";
+        return description;
+    }
+
+    else if( score <= 85){
+        description = "bet"
+        return description;
+    }
+
+    else if( score <= 100){
+        description = "things look good"
+        return description;
+    }
+
 
 }
 
@@ -226,6 +242,7 @@ calcButton.addEventListener('click', async ()=> {
     
     percentage = parseInt(await getPercent());
     let avg = (percentage + clubResult)/2;
+    let desc = getDescription(avg);
     const divider = document.createElement('div');
 
     console.log(clubResult);
@@ -237,6 +254,8 @@ calcButton.addEventListener('click', async ()=> {
     const calcInnerHTML = `
     <h1 class="calcPercent">${avg}%
     </h1>
+
+    <h2 class="wittydescription"> ${desc} </h2>
     `;
 
     divider.innerHTML = calcInnerHTML;
