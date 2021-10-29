@@ -13,7 +13,6 @@
 
     <link rel="stylesheet" href="styles.css">
 
-    
 
     <title>Love Calculator</title>
 
@@ -25,29 +24,7 @@
       <span class="navbar-brand mb-0 h1">❤️FHU Love Calculator</span>
     </nav>
 
-    <form>
-      <input type="text" id="number" value="0"/>
-      <input type="button" onclick="incrementValue()" value="Increase" />
-  </form>
- 
-  <script>
-     function incrementValue()
-     {
-         var value = parseInt(document.getElementById('number').value, 10);
-         value = isNaN(value) ? 0 : value;
-         value++;
-         document.getElementById('number').value = value;
-     }
- </script>
 
-    <section class="resultSection">
-      <h1 type=text id="number" value="0">Results</h1>
-      <span id="cvalue"></span>
-        
-    
-    </section>
-
-   
     
      <div class="container">
 
@@ -109,6 +86,10 @@
     
 
       <button id= "calcButton" type="button" class="calcButton btn btn-primary btn-lg btn-block">Calculate Results</button>
+
+      <div id="calcResults">
+        
+      </div>
 
 
     </div>

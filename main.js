@@ -5,14 +5,23 @@
 // Output
 // NameCompatibility (from API) and ClubCompatibility (from matrix)
 // witty description 
-var person1name = getElementById(floatingInputGrid1)
-var person2name = getElementById(floatingInputGrid2)
+var name1 = "";
+var name2 = "";
 
 
 
-let count = 1;
+var person1name = document.getElementById('floatingInputGrid1');
+var person2name = document.getElementById('floatingInputGrid2');
+person1name.addEventListener("change", ()=>{
+    name1 = person1name.value;
+});
+
+person2name.addEventListener("change", ()=>{
+    name2 = person2name.value;
+});
+
  
-const value = document.querySelect("#cvalue")
+// const value = document.querySelect("#cvalue")
 
 
 
@@ -57,7 +66,7 @@ clubSelect.addEventListener( "change" , () => {
 function updateResults(c1, c2){
     let results = cvalue;
     //same club
-    if (c1 == ep && c2 == ep){
+    if (c1 == 'ep' && c2 == 'ep'){
         cvalue = 89
     }
     else if (c1 == xbx && c2 == xbx){
@@ -182,13 +191,76 @@ function updateResults(c1, c2){
     //chorale
     value.textContent = count
 }
+var percentage = 0;
+const percentage1 = document.getElementById("calcResults");
 
-calcButton.addEventListener('click', function(e) {
-    count++
-    value.textContent = count;
+
+calcButton.addEventListener('click', async ()=> {
+   
+    clearResults();
+    percentage = parseInt(await getPercent());
+    const divider = document.createElement('div');
+
+
+    const calcInnerHTML = `
+    <h1 class="calcPercent">${percentage}
+    </h1>
+    `;
+
+    divider.innerHTML = calcInnerHTML;
+
+    percentage1.appendChild(divider);
+    
 });
 
 
+async function getPercent() {
 
+    var url1 = fetch(`https://love-calculator.p.rapidapi.com/getPercentage?sname=${name1}&fname=${name2}`, {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "love-calculator.p.rapidapi.com",
+            "x-rapidapi-key": "17b405297emsh7fe7b5361d8f08fp1267a2jsnc122a8cf8643"
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        return data.percentage;
+        
+    })
+    .catch(err => {
+        console.error(err);
+    });
+
+    return url1;
+}
+
+
+
+
+
+
+function updateResults(){
+
+
+    const divider = document.createElement('div');
+
+
+    const calcInnerHTML = `
+    <h1 class="calcPercent">${percentage}
+    </h1>
+    `;
+
+    divider.innerHTML = calcInnerHTML;
+
+    percentage1.appendChild(divider);
+
+
+}
+    
+function clearResults(){
+    percentage1.innerHTML = "";
+}
 
 
